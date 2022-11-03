@@ -9,8 +9,7 @@ message Validator{
   double gt = 3;
   double lte = 4;
   double lt = 5;
-  double eq = 7;
-  string stringEq = 8;
+  string eq = 7;
   string in = 9; //做in
   string regexp = 10;
 }

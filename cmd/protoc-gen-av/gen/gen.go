@@ -8,6 +8,7 @@ import (
 	"github.com/Gitforxuyang/proto-validaotr/utils"
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/protoc-gen-go/descriptor"
+	"strconv"
 	"strings"
 )
 
@@ -106,10 +107,11 @@ func (p *metaPlugin) genServerCode(packageName string, svc *descriptor.ServiceDe
 						return nil, m.cef("array %s len is 0")
 					}`, utils.FirstUpper(field.GetName()), field.GetName()))
 				}
-				if validator.Eq != 0 {
+				if validator.Eq != "" {
+					n, _ := strconv.ParseInt(validator.Eq, 10, 64)
 					p.P(fmt.Sprintf(`if len(req.%s) != %d {
 						return nil, m.cef("array %s len must is %d")
-					}`, utils.FirstUpper(field.GetName()), int64(validator.Eq), field.GetName(), int64(validator.Eq)))
+					}`, utils.FirstUpper(field.GetName()), n, field.GetName(), n))
 				}
 				if validator.Gte != 0 {
 					p.P(fmt.Sprintf(`if len(req.%s) < %d {
@@ -137,10 +139,10 @@ func (p *metaPlugin) genServerCode(packageName string, svc *descriptor.ServiceDe
 						return nil, m.cef("%s can not empty")
 					}`, utils.FirstUpper(field.GetName()), field.GetName()))
 				}
-				if validator.StringEq != "" {
+				if validator.Eq != "" {
 					p.P(fmt.Sprintf(`if req.%s != %s {
 						return nil, m.cef("%s must eq %s")
-					}`, utils.FirstUpper(field.GetName()), validator.StringEq, field.GetName(), validator.StringEq))
+					}`, utils.FirstUpper(field.GetName()), validator.Eq, field.GetName(), validator.Eq))
 				}
 				if validator.In != "" {
 					if validator.In[0:1] != "[" || validator.In[len(validator.In)-1:] != "]" {
@@ -175,10 +177,11 @@ func (p *metaPlugin) genServerCode(packageName string, svc *descriptor.ServiceDe
 						return nil, m.cef("%s can not empty")
 					}`, utils.FirstUpper(field.GetName()), field.GetName()))
 				}
-				if validator.Eq != 0 {
+				if validator.Eq != "" {
+					n, _ := strconv.ParseInt(validator.Eq, 10, 64)
 					p.P(fmt.Sprintf(`if req.%s != %d {
 						return nil, m.cef("%s must is %d")
-					}`, utils.FirstUpper(field.GetName()), int64(validator.Eq), field.GetName(), int64(validator.Eq)))
+					}`, utils.FirstUpper(field.GetName()), n, field.GetName(), n))
 				}
 				if validator.Gte != 0 {
 					p.P(fmt.Sprintf(`if req.%s < %d {
@@ -226,10 +229,11 @@ func (p *metaPlugin) genServerCode(packageName string, svc *descriptor.ServiceDe
 						return nil, m.cef("%s can not empty")
 					}`, utils.FirstUpper(field.GetName()), field.GetName()))
 				}
-				if validator.Eq != 0 {
+				if validator.Eq != "" {
+					n, _ := strconv.ParseFloat(validator.Eq, 10)
 					p.P(fmt.Sprintf(`if req.%s != %v {
 						return nil, m.cef("%s must is %v")
-					}`, utils.FirstUpper(field.GetName()), validator.Eq, field.GetName(), validator.Eq))
+					}`, utils.FirstUpper(field.GetName()), n, field.GetName(), n))
 				}
 				if validator.Gte != 0 {
 					p.P(fmt.Sprintf(`if req.%s < %v {
