@@ -1,0 +1,20 @@
+syntax = "proto3";
+package plugin;
+import "google/protobuf/descriptor.proto";
+
+
+message Validator{
+  bool omitempty = 1; //允许为空 默认为tru
+  double gte = 2; // >=
+  double gt = 3;
+  double lte = 4;
+  double lt = 5;
+  double eq = 7;
+  string stringEq = 8;
+  string in = 9; //做in
+  string regexp = 10;
+}
+
+extend google.protobuf.FieldOptions {
+  Validator validator = 50002;
+}

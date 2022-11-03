@@ -1,0 +1,21 @@
+syntax = "proto3";
+package post;
+
+import "plugin.proto";
+
+
+service PostService {
+  rpc PingPong (Ping) returns (Pong) {}
+}
+
+message Ping {
+  string name = 1 [(plugin.validator) = {
+    omitempty: false;
+    in: "[1,2,3]";
+    regexp: "123";
+  }];
+  
+}
+message Pong{
+
+}

@@ -1,0 +1,8 @@
+*.o
+*.a
+*.so
+.idea/
+# Mac OS
+*.DS_Store
+
+bin
