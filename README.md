@@ -23,6 +23,19 @@ go install github.com/Gitforxuyang/proto-validaotr/cmd/protoc-gen-av
 #### 多个服务(对于有些大仓库，很多服务在同一个目录下)
 [参考examples/multi](examples/multi)
 
+#### 方法介绍
+omitempty: 允许为空,默认为true
+当值为false时，当field的类型为string时，field不能为空字符串，
+
+| 字段类型 | 默认值 | 类型 |当字段是string类型时 |repeated时|int32/int64/uint32/uint64时|float/double时|message类型时|
+|  :----:|  :----: | :----: |:----: |:----: |:----: |:----: |:----: |
+| omitempty | true | bool |不能为空字符串|数组长度不能为0|值不能为0|值不能为0|不能为nil|
+|gte|0(当默认或值=0时代表不启用)|double|
+
+
+
+
+
 ### QA
 
 #### 为什么需要复制plugin.proto文件到自己的服务里
