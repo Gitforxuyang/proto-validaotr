@@ -18,7 +18,7 @@ func NewDemoServiceServerImpl(svc DemoServiceServer, cef CreateErrFunc) *DemoSer
 	return &DemoServiceServerImpl{svc: svc, cef: cef}
 }
 
-var pingPongNameRegexp = regexp.MustCompile("123")
+var pingPongNameRegexp = regexp.MustCompile("^[a-zA-Z][a-zA-Z0-9_]{4,15}$")
 
 func (m *DemoServiceServerImpl) PingPong(ctx context.Context, req *Ping) (*Pong, error) {
 	if req.Name == "" {
@@ -29,6 +29,15 @@ func (m *DemoServiceServerImpl) PingPong(ctx context.Context, req *Ping) (*Pong,
 	}
 	if !pingPongNameRegexp.MatchString(req.Name) {
 		return nil, m.cef("name regexp verification failed")
+	}
+	if req.Age == 0 {
+		return nil, m.cef("age can not empty")
+	}
+	if req.Age <= 18 {
+		return nil, m.cef("age must > 18")
+	}
+	if req.Age >= 200 {
+		return nil, m.cef("age must < 200")
 	}
 	return m.svc.PingPong(ctx, req)
 }

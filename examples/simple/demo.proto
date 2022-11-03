@@ -12,7 +12,12 @@ message Ping {
   string name = 1 [(plugin.validator) = {
     omitempty: false;
     in: "[1,2,3]";
-    regexp: "123";
+    regexp: "^[a-zA-Z][a-zA-Z0-9_]{4,15}$";
+  }];
+  int32 age = 2[(plugin.validator) = {
+    omitempty:false;
+    gt: 18;
+    lt: 200;
   }];
   
 }
