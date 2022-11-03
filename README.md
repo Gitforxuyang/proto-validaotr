@@ -24,14 +24,18 @@ go install github.com/Gitforxuyang/proto-validaotr/cmd/protoc-gen-av
 [参考examples/multi](examples/multi)
 
 
-### QA
+###QA
+
 ####为什么需要复制plugin.proto文件到自己的服务里
+
 因为go mod模式下，无法通过原来gopath的方式去src目录下读取第三方库的文件了。 所以只能这样
 
 ####为什么还需要传创建error的方法
+
 因为有些业务有自己的error对象，无法直接返回系统的error，所以提供创建error对象的方法，供使用方自己
 去定义error的创建
 
 ####我的proto文件在goland里标红怎么办
+
 在goland中配置对proto文件的读取目录，如下图所示：
 ![img.png](img.png)
