@@ -2,11 +2,7 @@ syntax = "proto3";
 package plugin;
 import "google/protobuf/descriptor.proto";
 
-message ApiDoc{
-  string desc = 1;
-  string default = 2;
-  bool required = 3;
-}
+
 message Validator{
   bool notEmpty = 1; //当作用到string时  !="" 当作用到数值类型时 !=0 当作用到数组时 len(x)!=0
   double gte = 2;
@@ -19,6 +15,5 @@ message Validator{
 }
 
 extend google.protobuf.FieldOptions {
-  ApiDoc doc = 50001;
   Validator validator = 50002;
 }

@@ -1,0 +1,50 @@
+
+syntax = "proto3";
+package demo;
+
+import "github.com/Gitforxuyang/proto-validaotr/proto/plugin/plugin.proto";
+
+
+service MetaDemoService {
+  rpc Ping (PingReq) returns (PingResp) {}
+  rpc Pong (Nil) returns (Nil) {}
+}
+message Nil{
+
+}
+
+message User{
+    string name=1[json_name = "statusCode"];
+    string ukiId=2;
+}
+message PingReq {
+    string name = 1 [(plugin.doc)={
+        desc: "name desc";
+    },(plugin.validator)={
+        notEmpty: false;
+  }];
+  int32 age=2[(plugin.doc)={
+        desc: "age desc";
+    },(plugin.validator)={
+        notEmpty: false;
+  }];
+  string user_age=3[json_name = "user_age"];
+  double dx=6[(plugin.doc)={
+       desc: "dx desc";
+    },(plugin.validator)={
+       notEmpty: false;
+      
+  }];
+  User user=7;
+  repeated User ids=8;
+  map<int32,User> userMap=9;
+
+}
+
+message PingResp {
+  string message = 1;
+  int32 x=2;
+  string y=3;
+  float z=4;
+  double a=5;
+}
