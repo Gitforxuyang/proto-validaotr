@@ -24,16 +24,16 @@ go install github.com/Gitforxuyang/proto-validaotr/cmd/protoc-gen-av
 [参考examples/multi](examples/multi)
 
 #### 方法介绍
-omitempty: 允许为空,默认为true
-当值为false时，当field的类型为string时，field不能为空字符串，
+所有的默认值等于不启用插件 比如如果设置gte=0，可能本意是需要入参>=0，但是插件无法读取，所以请不要在配置中使用
+各类型的零值
 
 | 字段类型 | 默认值 | 类型 |当字段是string类型时 |repeated时|int32/int64/uint32/uint64时|float/double时|message类型时|
 |  :----:|  :----: | :----: |:----: |:----: |:----: |:----: |:----: |
 | omitempty | true | bool |不能为空字符串|数组长度不能为0|值不能为0|值不能为0|不能为nil|
-|gte|0(=不启用)|double|不支持|长度必须>=n|值必须>=|值必须>=|不支持|
-|gt|0(=不启用)|double|不支持|长度必须>n|值必须>|值必须>|不支持|
-|lte|0(=不启用)|double|不支持|长度必须<=n|值必须<=|值必须<=|不支持|
-|lt|0(=不启用)|double|不支持|长度必须<n|值必须<|值必须<|不支持|
+|gte|0|double|不支持|长度必须>=n|值必须>=|值必须>=|不支持|
+|gt|0|double|不支持|长度必须>n|值必须>|值必须>|不支持|
+|lte|0|double|不支持|长度必须<=n|值必须<=|值必须<=|不支持|
+|lt|0|double|不支持|长度必须<n|值必须<|值必须<|不支持|
 |eq|""|string|字符串=n|长度必须=n|值必须=n|值必须=n|不支持|
 |in|""|string|格式必须是[1,2,3]|不支持|格式必须是[1,2,3]|格式必须是[1.1,2.2,3.3]|不支持|
 |regexp|""|string|正则表达式|不支持|不支持|不支持|不支持|
