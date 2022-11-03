@@ -60,4 +60,4 @@ go install github.com/Gitforxuyang/proto-validaotr/cmd/protoc-gen-av
 
 
 ### 其它
-新上线的仓库，欢迎使用，如果发现什么问题，欢迎提issue
+新上线的仓库，欢迎使用，如果发现什么问题，欢迎提issue，实时维护。
