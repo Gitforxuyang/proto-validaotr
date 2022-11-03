@@ -57,3 +57,7 @@ go install github.com/Gitforxuyang/proto-validaotr/cmd/protoc-gen-av
 ### TODO
 
 如果有需要，可以增加一个自定义错误信息的字段
+
+
+### 其它
+新上线的仓库，欢迎使用，如果发现什么问题，欢迎提issue
