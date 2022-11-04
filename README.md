@@ -16,6 +16,14 @@ proto-validator是我们在平时开发中为了解决业务痛点而创造的�
 
 go install github.com/Gitforxuyang/proto-validaotr/cmd/protoc-gen-av
 
+#### proto定义即可自动完成参数验证
+
+定义：
+![img_1.png](img_1.png)
+
+编译的自动参数验证代码：
+![img_2.png](img_2.png)
+
 #### 简单服务(单个服务)
 
 [参考examples/simple](examples/simple)
