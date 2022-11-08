@@ -14,7 +14,7 @@ proto-validator是我们在平时开发中为了解决业务痛点而创造的�
 
 先安装protoc-gen-av插件
 
-go install github.com/Gitforxuyang/proto-validaotr/cmd/protoc-gen-av
+go install github.com/Gitforxuyang/proto-validaotr/cmd/protoc-gen-av@v1.0.2
 
 #### proto定义即可自动完成参数验证
 

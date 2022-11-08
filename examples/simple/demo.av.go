@@ -24,6 +24,9 @@ func (m *DemoServiceServerImpl) PingPong(ctx context.Context, req *Ping) (*Pong,
 	if req.Name == "" {
 		return nil, m.cef("name can not empty")
 	}
+	if req.Name != "321" {
+		return nil, m.cef("name must eq 321")
+	}
 	if req.Name != "1" && req.Name != "2" && req.Name != "3" {
 		return nil, m.cef("name must in [1,2,3]")
 	}

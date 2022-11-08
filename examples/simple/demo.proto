@@ -13,6 +13,7 @@ message Ping {
     omitempty: false;
     in: "[1,2,3]";
     regexp: "^[a-zA-Z][a-zA-Z0-9_]{4,15}$";
+    eq: "321";
   }];
   int32 age = 2[(plugin.validator) = {
     omitempty:false;

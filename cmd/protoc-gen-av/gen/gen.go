@@ -140,7 +140,7 @@ func (p *metaPlugin) genServerCode(packageName string, svc *descriptor.ServiceDe
 					}`, utils.FirstUpper(field.GetName()), field.GetName()))
 				}
 				if validator.Eq != "" {
-					p.P(fmt.Sprintf(`if req.%s != %s {
+					p.P(fmt.Sprintf(`if req.%s != "%s" {
 						return nil, m.cef("%s must eq %s")
 					}`, utils.FirstUpper(field.GetName()), validator.Eq, field.GetName(), validator.Eq))
 				}
